@@ -1,0 +1,27 @@
+.icon-block {
+  padding: 0 15px;
+}
+.icon-block .material-icons {
+	font-size: inherit;
+}
+#logoNavbar{
+  height: 65px;
+}
+
+#logo-container{
+  padding: 0;
+  margin: 0;
+  height: 65px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+}
+
+#productSearch {
+  height: 50px;
+  margin: 7px 0 0 0;
+}
+
+#titleHome{
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+}
