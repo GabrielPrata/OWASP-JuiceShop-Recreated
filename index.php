@@ -18,6 +18,7 @@
 
 <body class="grey darken-3">
   <?php
+  include 'src/conn.php';
   include 'navbar.php';
   ?>
   <div class="container">
@@ -25,12 +26,40 @@
       <h3 id="titleHome" class="white-text">Conheça nossos produtos!</h3>
     </div>
     <div class="row">
+      <?php
+      $sql = "SELECT * FROM products";
+      $query = mysqli_query($conn, $sql);
 
+      while ($reg = mysqli_fetch_array($query)) {
+      ?>
+        <div class="col s12 m6 l4">
+          <div class="card grey lighten-3">
+            <div class="card-image waves-effect waves-block waves-light">
+              <img class="activator" id="productImage" src="img/products/<?php echo $reg["id"] ?>.jpg">
+            </div>
+            <div class="card-content">
+              <span class="card-title activator grey-text text-darken-4"><?php echo $reg["name"]; ?><i class="material-icons right">more_vert</i></span>
+              <p><a href="#">Clique para ver mais</a></p>
+            </div>
+            <div class="card-reveal grey lighten-3">
+              <span class="card-title grey-text text-darken-4"><?php echo $reg["name"]; ?><i class="material-icons right">close</i></span>
+              <p>
+                <?php echo $reg['description'] ?>
+                <br>
+                <a href="src/comments.php">Acessar página de comentários</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      <?php
+      }
+
+      ?>
     </div>
   </div>
 
   <?php
-    include 'footer.php';
+  include 'footer.php';
   ?>
 
 

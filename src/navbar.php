@@ -1,7 +1,7 @@
 <nav class="blue-grey darken-2" role="navigation">
     <div class="nav-wrapper container row">
-        <a id="logo-container" href="#" class="col s3 valign-wrapper">
-            <img src="img/JuiceShop_Logo.png" alt="OWASP Juice Shop Logo" id="logoNavbar">
+        <a id="logo-container" href="../index.php" class="col s3 valign-wrapper">
+            <img src="../img/JuiceShop_Logo.png" alt="OWASP Juice Shop Logo" id="logoNavbar">
             <p>OWASP Juice Shop</p>
         </a>
         <div class="col s6">
@@ -26,7 +26,7 @@
         </div>
 
         <div class="col s3">
-            <form method="get" name="frm_busca" action="src/search.php" id="productSearch">
+            <form method="get" name="frm_busca" action="search.php" id="productSearch">
                 <div class="input-field">
                     <input id="search" type="search" name="txt_search" required placeholder="Pesquisar...">
                     <label class="label-icon" for="search"><i class="material-icons">search</i></label>
