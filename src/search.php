@@ -53,7 +53,7 @@ $search = $_GET["txt_search"];
                                 <p>
                                     <?php echo $reg['description'] ?>
                                     <br>
-                                    <a href="comments.php">Acessar página de comentários</a>
+                                    <a class="modal-trigger" href="#modalComments">Acessar página de comentários</a>
                                 </p>
                             </div>
                         </div>

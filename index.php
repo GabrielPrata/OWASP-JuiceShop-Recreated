@@ -46,11 +46,36 @@
               <p>
                 <?php echo $reg['description'] ?>
                 <br>
-                <a href="src/comments.php">Acessar página de comentários</a>
+                <a class="modal-trigger" href="#modalComments<?php echo $reg['id'] ?>">Acessar página de comentários</a>
               </p>
             </div>
           </div>
         </div>
+
+        <!-- Modal de comentários -->
+        <div id="modalComments<?php echo $reg['id'] ?>" class="modal modal-fixed-footer">
+          <div class="modal-content">
+            <h4><?php echo $reg['name'] ?>, comentários:</h4>
+            <?php
+            $sqlComments = "SELECT * FROM comments 
+              INNER JOIN products ON comments.productId = products.id
+              WHERE products.id = " . $reg['id'];
+
+            echo "<br>" . $sqlComments . "<br>";
+
+            $queryComments = mysqli_query($conn, $sqlComments);
+            while ($regComments = mysqli_fetch_array($queryComments)) {
+              echo $regComments['content'] . "<br>";
+            }
+
+            ?>
+            <p>A bunch of text</p>
+          </div>
+          <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+          </div>
+        </div>
+        <!-- Fim do modal de comentários -->
       <?php
       }
 
