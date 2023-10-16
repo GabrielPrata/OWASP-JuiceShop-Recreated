@@ -16,8 +16,6 @@
     $sql = "INSERT INTO comments(userId, productId, content) ";
     $sql .= "VALUES(" . $_SESSION['userId'] . ", " . $id . ", '" . $content . "')";
 
-    echo $sql;
-
     if (mysqli_query($conn, $sql)) {
         mysqli_close($conn);
     

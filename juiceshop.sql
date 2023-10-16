@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 16/10/2023 às 21:45
--- Versão do servidor: 10.4.28-MariaDB
--- Versão do PHP: 8.2.4
+-- Tempo de geração: 17-Out-2023 às 01:06
+-- Versão do servidor: 10.4.27-MariaDB
+-- versão do PHP: 8.0.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `categories`
+-- Estrutura da tabela `categories`
 --
 
 CREATE TABLE `categories` (
@@ -33,7 +33,7 @@ CREATE TABLE `categories` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Despejando dados para a tabela `categories`
+-- Extraindo dados da tabela `categories`
 --
 
 INSERT INTO `categories` (`id`, `categoryname`) VALUES
@@ -44,7 +44,7 @@ INSERT INTO `categories` (`id`, `categoryname`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `comments`
+-- Estrutura da tabela `comments`
 --
 
 CREATE TABLE `comments` (
@@ -55,20 +55,20 @@ CREATE TABLE `comments` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Despejando dados para a tabela `comments`
+-- Extraindo dados da tabela `comments`
 --
 
 INSERT INTO `comments` (`id`, `userId`, `productId`, `content`) VALUES
-(2350, 11, 1, 'Muito bom HAHAHAHAHAHAHAHAAHAHA'),
-(2351, 11, 1, 'MUITO RUIM AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'),
-(2352, 4, 3, 'Teste comentários'),
-(2353, 4, 3, '<script>alert(hi)</script>'),
-(2354, 4, 3, '<scriptx20type=\"text/javascript\">javascript:alert(1);</script>');
+(1, 11, 1, 'Muito bom HAHAHAHAHAHAHAHAAHAHA'),
+(2, 11, 1, 'MUITO RUIM AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'),
+(3, 4, 3, 'Teste comentários'),
+(4, 11, 10, 'teste comentario'),
+(5, 11, 14, 'Vitamina ccccccccccccccccccccccccccccccccccccccccccc');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `products`
+-- Estrutura da tabela `products`
 --
 
 CREATE TABLE `products` (
@@ -79,7 +79,7 @@ CREATE TABLE `products` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Despejando dados para a tabela `products`
+-- Extraindo dados da tabela `products`
 --
 
 INSERT INTO `products` (`id`, `name`, `description`, `category`) VALUES
@@ -100,17 +100,12 @@ INSERT INTO `products` (`id`, `name`, `description`, `category`) VALUES
 (15, 'Suco de RaspBerry', 'Feito com uma mistura de Raspberry Pi, água e açúcar.', 1),
 (16, 'Suco de Morango', 'Doce e saboroso!', 1),
 (17, 'Tattoo Temporária', 'Faça uma dessas tatuagens temporárias para usar com orgulho o logotipo da OWASP Juice Shop ou CTF Extension em sua pele! Se você twittar uma foto sua com a tatuagem, receberá alguns de nossos adesivos de graça! Mencione @owasp_juiceshop em seu tweet', 3),
-(18, 'Suco de Woodruff', 'Colhido e fabricado na Floresta Negra, Alemanha. Pode causar comportamento hiperativo em crianças. Pode causar língua verde permanente quando consumido não diluído.', 1),
-(41, 'teste', 'teste', 1),
-(42, 'teste', 'teste', 1),
-(43, 'teste', 'teste', 1),
-(44, 'teste2', 'teste2', 1),
-(45, 'teste', 'teste', 1);
+(18, 'Suco de Woodruff', 'Colhido e fabricado na Floresta Negra, Alemanha. Pode causar comportamento hiperativo em crianças. Pode causar língua verde permanente quando consumido não diluído.', 1);
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `users`
+-- Estrutura da tabela `users`
 --
 
 CREATE TABLE `users` (
@@ -122,7 +117,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Despejando dados para a tabela `users`
+-- Extraindo dados da tabela `users`
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `admin`) VALUES
@@ -143,13 +138,13 @@ INSERT INTO `users` (`id`, `name`, `email`, `password`, `admin`) VALUES
 --
 
 --
--- Índices de tabela `categories`
+-- Índices para tabela `categories`
 --
 ALTER TABLE `categories`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices de tabela `comments`
+-- Índices para tabela `comments`
 --
 ALTER TABLE `comments`
   ADD PRIMARY KEY (`id`),
@@ -157,20 +152,20 @@ ALTER TABLE `comments`
   ADD KEY `productId` (`productId`);
 
 --
--- Índices de tabela `products`
+-- Índices para tabela `products`
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (`id`),
   ADD KEY `product_category` (`category`) USING BTREE;
 
 --
--- Índices de tabela `users`
+-- Índices para tabela `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT para tabelas despejadas
+-- AUTO_INCREMENT de tabelas despejadas
 --
 
 --
@@ -183,7 +178,7 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT de tabela `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2357;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2360;
 
 --
 -- AUTO_INCREMENT de tabela `products`
@@ -198,18 +193,18 @@ ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- Restrições para tabelas despejadas
+-- Restrições para despejos de tabelas
 --
 
 --
--- Restrições para tabelas `comments`
+-- Limitadores para a tabela `comments`
 --
 ALTER TABLE `comments`
   ADD CONSTRAINT `comment_idProduct` FOREIGN KEY (`productId`) REFERENCES `products` (`id`),
   ADD CONSTRAINT `comment_idUser` FOREIGN KEY (`userId`) REFERENCES `users` (`id`);
 
 --
--- Restrições para tabelas `products`
+-- Limitadores para a tabela `products`
 --
 ALTER TABLE `products`
   ADD CONSTRAINT `product_category` FOREIGN KEY (`category`) REFERENCES `categories` (`id`);

@@ -17,6 +17,7 @@
             if ($_SESSION['logado'] == true) {
             ?>
                 <ul id="dropdown1" class="dropdown-content">
+                    <li><a href="#" class="black-text"><?php echo $_SESSION['userName'] ?></a></li>
                     <?php
                     if (isset($_SESSION['userAdmin']) && $_SESSION['userAdmin'] == true) {
                     ?>

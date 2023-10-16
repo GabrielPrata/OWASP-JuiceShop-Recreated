@@ -36,6 +36,9 @@ if (isset($_SESSION['userAdmin']) && $_SESSION['userAdmin'] == true) {
     ?>
     <div class="container">
       <div class="row">
+        <h3 class="white-text">Olá <?php echo $_SESSION['userName'] ?></h3>
+      </div>
+      <div class="row">
         <ul class="collapsible popout">
           <li class="white">
             <div class="collapsible-header">
