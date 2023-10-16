@@ -13,16 +13,32 @@
                     </a>
                 </li>
             </ul>
-            <ul id="dropdown1" class="dropdown-content">
-                <li><a href="#!">one</a></li>
-                <li><a href="#!">two</a></li>
-                <li class="divider"></li>
-                <li><a href="#!">three</a></li>
-            </ul>
+            <?php
+            if ($_SESSION['logado'] == true) {
+            ?>
+                <ul id="dropdown1" class="dropdown-content">
+                    <?php
+                    if (isset($_SESSION['userAdmin']) && $_SESSION['userAdmin'] == true) {
+                    ?>
+                        <li><a href="userArea/adminPanel.php">Painel Admin</a></li>
+                    <?php
+                    }
+                    ?>
+                    <li><a href="userArea/logout.php">Sair</a></li>
+                </ul>
+            <?php
+            } else {
+            ?>
+                <ul id="dropdown1" class="dropdown-content">
+                    <li><a href="userArea/formLogin.php">Fazer Login</a></li>
+                </ul>
+            <?php
+            }
+            ?>
 
             <!-- <ul class="right hide-on-med-and-down">
-                <li><a href="#">Navbar Link</a></li>
-            </ul> -->
+    <li><a href="#">Navbar Link</a></li>
+</ul> -->
         </div>
 
         <div class="col s3">

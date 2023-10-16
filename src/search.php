@@ -1,4 +1,12 @@
 <?php
+if (!isset($_SESSION)) {
+    session_start();
+}
+
+if (!isset($_SESSION['logado']) || $_SESSION['logado'] != true) {
+    $_SESSION['logado'] = false;
+}
+
 include 'conn.php';
 $search = $_GET["txt_search"];
 ?>
@@ -46,18 +54,76 @@ $search = $_GET["txt_search"];
                             </div>
                             <div class="card-content">
                                 <span class="card-title activator grey-text text-darken-4"><?php echo $reg["name"]; ?><i class="material-icons right">more_vert</i></span>
-                                <p><a href="#">Clique para ver mais</a></p>
+                                <p><a class="activator">Clique para ver mais</a></p>
                             </div>
                             <div class="card-reveal grey lighten-3">
                                 <span class="card-title grey-text text-darken-4"><?php echo $reg["name"]; ?><i class="material-icons right">close</i></span>
                                 <p>
                                     <?php echo $reg['description'] ?>
                                     <br>
-                                    <a class="modal-trigger" href="#modalComments">Acessar página de comentários</a>
+                                    <a class="modal-trigger" href="#modalComments<?php echo $reg['id'] ?>">Acessar página de comentários</a>
                                 </p>
                             </div>
                         </div>
                     </div>
+
+                    <!-- Modal de comentários -->
+                    <div id="modalComments<?php echo $reg['id'] ?>" class="modal modal-fixed-footer">
+                        <div class="modal-content">
+                            <h4><?php echo $reg['name'] ?>, comentários:</h4>
+                            <div class="divider"></div>
+                            <?php
+                            $sqlComments = "SELECT * FROM comments 
+                            INNER JOIN products ON comments.productId = products.id
+                            INNER JOIN users ON comments.userId = users.id
+                            WHERE products.id = " . $reg['id'];
+
+                            $queryComments = mysqli_query($conn, $sqlComments);
+
+                            if (mysqli_num_rows($queryComments) < 1) {
+                                echo "<h5>Ainda não há avaliações sobre este produto!</h5>";
+                            } else {
+                                while ($regComments = mysqli_fetch_array($queryComments)) {
+                            ?>
+                                    <div class="row">
+                                        <p>
+                                            <b><?php echo $regComments['name'] ?>:</b>
+                                            <?php echo $regComments['content'] ?>
+                                        </p>
+                                    </div>
+                                <?php
+                                }
+                            }
+                            if (isset($_SERVER) && $_SESSION['logado'] == true) {
+                                ?>
+                                <div class="divider"></div>
+                                <div class="row">
+                                    <form name="formNewComment" method="POST" action="userArea/newComment.php?id=<?php echo $reg['id'] ?>">
+                                        <div class="col s12">
+                                            <p>Deixe um Novo Comentário:</p>
+                                        </div>
+
+                                        <div class="col s12">
+                                            <div class="input-field col s12">
+                                                <textarea id="textareaComment" name="textareaComment" maxlength="250" class="materialize-textarea" data-length="250" required></textarea>
+                                                <label for="textareaComment">Comentário:</label>
+                                            </div>
+                                            <div class="col s12">
+                                                <input type="submit" name="btnComentario" value="Enviar" class="btn btn-small green darken-3">
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            <?php
+                            }
+
+                            ?>
+                        </div>
+                        <div class="modal-footer">
+                            <a href="#!" class="modal-close waves-effect waves-red btn-flat red darken-2 white-text">Fechar</a>
+                        </div>
+                    </div>
+                    <!-- Fim do modal de comentários -->
             <?php
                 }
             }

@@ -29,3 +29,20 @@
 #productImage{
   height: 311px;
 }
+
+#formLogin{
+  width: 70%;
+  border: solid 3px #1d1d1d;
+  border-radius: 25px;
+  padding: 30px;
+  margin: 10% 15%;
+}
+
+h5, h4{
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+}
+
+.collapsible {
+  margin: 10% 0%;
+}
