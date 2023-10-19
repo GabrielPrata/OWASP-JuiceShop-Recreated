@@ -1,5 +1,5 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `categories`
+-- Estrutura da tabela `categories`
 --
 
 CREATE TABLE `categories` (
@@ -33,7 +33,7 @@ CREATE TABLE `categories` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Despejando dados para a tabela `categories`
+-- Extraindo dados da tabela `categories`
 --
 
 INSERT INTO `categories` (`id`, `categoryname`) VALUES
@@ -44,7 +44,7 @@ INSERT INTO `categories` (`id`, `categoryname`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `comments`
+-- Estrutura da tabela `comments`
 --
 
 CREATE TABLE `comments` (
@@ -55,7 +55,7 @@ CREATE TABLE `comments` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Despejando dados para a tabela `comments`
+-- Extraindo dados da tabela `comments`
 --
 
 INSERT INTO `comments` (`id`, `userId`, `productId`, `content`) VALUES
@@ -66,7 +66,7 @@ INSERT INTO `comments` (`id`, `userId`, `productId`, `content`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `products`
+-- Estrutura da tabela `products`
 --
 
 CREATE TABLE `products` (
@@ -77,7 +77,7 @@ CREATE TABLE `products` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Despejando dados para a tabela `products`
+-- Extraindo dados da tabela `products`
 --
 
 INSERT INTO `products` (`id`, `name`, `description`, `category`) VALUES
@@ -103,7 +103,7 @@ INSERT INTO `products` (`id`, `name`, `description`, `category`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `users`
+-- Estrutura da tabela `users`
 --
 
 CREATE TABLE `users` (
@@ -115,7 +115,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Despejando dados para a tabela `users`
+-- Extraindo dados da tabela `users`
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `admin`) VALUES
@@ -136,13 +136,13 @@ INSERT INTO `users` (`id`, `name`, `email`, `password`, `admin`) VALUES
 --
 
 --
--- Índices de tabela `categories`
+-- Índices para tabela `categories`
 --
 ALTER TABLE `categories`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices de tabela `comments`
+-- Índices para tabela `comments`
 --
 ALTER TABLE `comments`
   ADD PRIMARY KEY (`id`),
@@ -150,20 +150,20 @@ ALTER TABLE `comments`
   ADD KEY `productId` (`productId`);
 
 --
--- Índices de tabela `products`
+-- Índices para tabela `products`
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (`id`),
   ADD KEY `product_category` (`category`) USING BTREE;
 
 --
--- Índices de tabela `users`
+-- Índices para tabela `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT para tabelas despejadas
+-- AUTO_INCREMENT de tabelas despejadas
 --
 
 --
@@ -176,7 +176,7 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT de tabela `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2359;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de tabela `products`
@@ -191,18 +191,18 @@ ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
--- Restrições para tabelas despejadas
+-- Restrições para despejos de tabelas
 --
 
 --
--- Restrições para tabelas `comments`
+-- Limitadores para a tabela `comments`
 --
 ALTER TABLE `comments`
   ADD CONSTRAINT `comment_idProduct` FOREIGN KEY (`productId`) REFERENCES `products` (`id`),
   ADD CONSTRAINT `comment_idUser` FOREIGN KEY (`userId`) REFERENCES `users` (`id`);
 
 --
--- Restrições para tabelas `products`
+-- Limitadores para a tabela `products`
 --
 ALTER TABLE `products`
   ADD CONSTRAINT `product_category` FOREIGN KEY (`category`) REFERENCES `categories` (`id`);
