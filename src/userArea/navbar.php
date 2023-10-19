@@ -14,7 +14,7 @@
                 </li>
             </ul>
             <?php
-            if ($_SESSION['logado'] == true) {
+            if (isset($_SESSION['logado']) && $_SESSION['logado'] == true) {
             ?>
                 <ul id="dropdown1" class="dropdown-content">
                     <?php

@@ -14,6 +14,19 @@ if (isset($_SESSION['userAdmin']) && $_SESSION['userAdmin'] == true) {
     $category = $_POST['productCategory'];
     $description = $_POST['textareaDescription'];
 
+    // $nome = stripslashes($_POST['productName']);
+    // $nome = mysqli_real_escape_string($conn, $nome);
+    // $nome = htmlspecialchars($nome);
+
+    // $category = stripslashes($_POST['productCategory']);
+    // $category = mysqli_real_escape_string($conn, $category);
+    // $category = htmlspecialchars($category);
+
+    // $description = stripslashes($_POST['textareaDescription']);
+    // $description = mysqli_real_escape_string($conn, $description);
+    // $description = htmlspecialchars($description);
+
+
     $sql = "INSERT INTO products";
     $sql .= "(name, description, category) ";
     $sql .= " VALUES('$nome', '$description', $category)";

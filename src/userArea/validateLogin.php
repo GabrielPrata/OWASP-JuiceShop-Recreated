@@ -4,6 +4,14 @@ include '../conn.php';
 $email = $_POST['userEmail'];
 $pass = $_POST['userPass'];
 
+// $email = stripslashes($_POST['userEmail']);
+// $email = mysqli_real_escape_string($conn, $email);
+
+// $pass = stripslashes($_POST['userPass']);
+// $pass = mysqli_real_escape_string($conn, $pass);
+
+// $pass = md5($pass);
+
 $sql = "SELECT * FROM users WHERE email = '$email' and password = '$pass'";
 
 $query = mysqli_query($conn, $sql);

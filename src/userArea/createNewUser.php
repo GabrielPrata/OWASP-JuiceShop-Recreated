@@ -5,6 +5,17 @@ $name = $_POST['userName'];
 $email = $_POST['userEmail'];
 $pass = $_POST['userPass'];
 
+// $name = stripslashes($_POST['userName']);
+// $name = mysqli_real_escape_string($conn, $name);
+
+// $email = stripslashes($_POST['userEmail']);
+// $email = mysqli_real_escape_string($conn, $email);
+
+// $pass = stripslashes($_POST['userPass']);
+// $pass = mysqli_real_escape_string($conn, $pass);
+// $pass = md5($pass);
+
+
 $sql = "INSERT INTO users(name, email, password) VALUES('$name', '$email', '$pass')";
 
 if (mysqli_query($conn, $sql)) {

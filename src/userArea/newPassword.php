@@ -11,7 +11,8 @@ if (isset($_SESSION['userAdmin']) && $_SESSION['userAdmin'] == true) {
 
     include '../conn.php';
     $password = $_POST['newPassword'];
-
+    // $password = md5($password);
+    
     $sql = "UPDATE users SET password='$password' WHERE id = " . $_SESSION['userId'];
 
     if (mysqli_query($conn, $sql)) {

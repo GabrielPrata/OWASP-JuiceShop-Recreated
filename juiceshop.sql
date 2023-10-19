@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 16/10/2023 às 21:45
+-- Tempo de geração: 19/10/2023 às 07:25
 -- Versão do servidor: 10.4.28-MariaDB
 -- Versão do PHP: 8.2.4
 
@@ -59,11 +59,9 @@ CREATE TABLE `comments` (
 --
 
 INSERT INTO `comments` (`id`, `userId`, `productId`, `content`) VALUES
-(2350, 11, 1, 'Muito bom HAHAHAHAHAHAHAHAAHAHA'),
-(2351, 11, 1, 'MUITO RUIM AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'),
-(2352, 4, 3, 'Teste comentários'),
-(2353, 4, 3, '<script>alert(hi)</script>'),
-(2354, 4, 3, '<scriptx20type=\"text/javascript\">javascript:alert(1);</script>');
+(1, 11, 1, 'Muito bom HAHAHAHAHAHAHAHAAHAHA'),
+(2, 11, 1, 'MUITO RUIM AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'),
+(3, 4, 3, 'Teste comentários');
 
 -- --------------------------------------------------------
 
@@ -100,12 +98,7 @@ INSERT INTO `products` (`id`, `name`, `description`, `category`) VALUES
 (15, 'Suco de RaspBerry', 'Feito com uma mistura de Raspberry Pi, água e açúcar.', 1),
 (16, 'Suco de Morango', 'Doce e saboroso!', 1),
 (17, 'Tattoo Temporária', 'Faça uma dessas tatuagens temporárias para usar com orgulho o logotipo da OWASP Juice Shop ou CTF Extension em sua pele! Se você twittar uma foto sua com a tatuagem, receberá alguns de nossos adesivos de graça! Mencione @owasp_juiceshop em seu tweet', 3),
-(18, 'Suco de Woodruff', 'Colhido e fabricado na Floresta Negra, Alemanha. Pode causar comportamento hiperativo em crianças. Pode causar língua verde permanente quando consumido não diluído.', 1),
-(41, 'teste', 'teste', 1),
-(42, 'teste', 'teste', 1),
-(43, 'teste', 'teste', 1),
-(44, 'teste2', 'teste2', 1),
-(45, 'teste', 'teste', 1);
+(18, 'Suco de Woodruff', 'Colhido e fabricado na Floresta Negra, Alemanha. Pode causar comportamento hiperativo em crianças. Pode causar língua verde permanente quando consumido não diluído.', 1);
 
 -- --------------------------------------------------------
 
@@ -126,7 +119,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `admin`) VALUES
-(1, 'João Silva', 'joao.silva@gmail.com', '123456', 0),
+(1, 'Administrador', 'admin@juiceshop.com', '123456', 1),
 (2, 'Maria Santos', 'maria.santos@hotmail.com', 'senha123', 0),
 (3, 'Pedro Oliveira', 'pedro.oliveira@outlook.com', 'abcdef', 0),
 (4, 'Ana Pereira', 'ana.pereira@gmail.com', 'qwerty', 0),
@@ -136,7 +129,7 @@ INSERT INTO `users` (`id`, `name`, `email`, `password`, `admin`) VALUES
 (8, 'Sofia Rodrigues', 'sofia.rodrigues@hotmail.com', 'senha1234', 0),
 (9, 'Matheus Alves', 'matheus.alves@gmail.com', 'abcd1234', 0),
 (10, 'Larissa Santos', 'larissa.santos@hotmail.com', 'senha@123', 0),
-(11, 'Gabriel Prata', 'gabrielsprata@hotmail.com', 'novasenha', 1);
+(11, 'Gabriel Prata', 'gabrielsprata@hotmail.com', 'novasenha', 0);
 
 --
 -- Índices para tabelas despejadas
@@ -183,19 +176,19 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT de tabela `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2357;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2359;
 
 --
 -- AUTO_INCREMENT de tabela `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT de tabela `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- Restrições para tabelas despejadas

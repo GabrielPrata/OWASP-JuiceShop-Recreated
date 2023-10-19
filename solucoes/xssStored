@@ -1,0 +1,15 @@
+<?php
+
+// Sanitize message input
+$message = stripslashes($message);
+$message = mysqli_real_escape_string($conn, $message);
+$message = htmlspecialchars($message);
+
+// Sanitize name input
+$name = stripslashes($name);
+$name = mysqli_real_escape_string($conn, $name);
+$name = htmlspecialchars($name);
+
+$query = "INSERT INTO guestbook (comment,name) VALUES ('$message','$name');";
+
+$result = mysqli_query($conn, $query);

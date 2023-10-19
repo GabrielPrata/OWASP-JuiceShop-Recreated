@@ -8,7 +8,9 @@ if (!isset($_SESSION['logado']) || $_SESSION['logado'] != true) {
 }
 
 include 'conn.php';
-$search = $_GET["txt_search"];
+// $search = $_GET["txt_search"];
+$search = htmlspecialchars($_GET['txt_search']);
+
 ?>
 
 <!DOCTYPE html>
